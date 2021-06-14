@@ -1,5 +1,6 @@
+const cors = require('cors');
 const express = require('express');
-const { result } = require('lodash');
+// const { result } = require('lodash');
 const { nanoid } = require('nanoid');
 const lowdb = require('lowdb');
 const moment = require('moment');
@@ -12,6 +13,7 @@ const userdb = lowdb(users);
 userdb.defaults({ users: [] }).write();
 
 app.use(express.json());
+app.use(cors());
 
 // Hämta meny från databasen /api/coffee
 app.get('/api/coffee', (req, res) => {
