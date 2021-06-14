@@ -1,6 +1,5 @@
 const cors = require('cors');
 const express = require('express');
-// const { result } = require('lodash');
 const { nanoid } = require('nanoid');
 const lowdb = require('lowdb');
 const moment = require('moment');
