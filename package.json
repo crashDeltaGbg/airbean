@@ -12,7 +12,7 @@
 		"url": "git+https://github.com/crashDeltaGbg/airbean.git"
 	},
 	"keywords": [],
-	"author": "Thomas & Rickard",
+	"author": "Thomas Laukkanen & Rickard Yxelflod",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/crashDeltaGbg/airbean/issues"
@@ -30,5 +30,8 @@
 		"lowdb": "^1.0.0",
 		"moment": "^2.29.1",
 		"nanoid": "^3.1.22"
+	},
+	"engines": {
+		"node": "v14.15.4"
 	}
 }

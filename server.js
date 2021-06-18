@@ -22,7 +22,8 @@ app.get('/api/coffee', (req, res) => {
 
 // Skapar ett användarkonto /api/account
 app.post('/api/account', (req, res) => {
-	user = req.body;
+	const user = req.body;
+	console.log('user:', user);
 	const userExist = userdb
 		.get('users')
 		.find({ username: user.username })
@@ -34,11 +35,13 @@ app.post('/api/account', (req, res) => {
 		result.success = false;
 		result.message = 'An account with that username already exists';
 	} else {
+		// user.username = user.username;
 		user.id = nanoid();
 		user.orders = [];
 		userdb.get('users').push(user).write();
 		result.success = true;
 		result.message = 'Account successfully created';
+		result.user = user;
 	}
 
 	res.json(result);
@@ -50,7 +53,11 @@ app.get('/api/users', (req, res) => {
 	let result = [];
 
 	for (let i = 0; i < users.length; i++) {
-		result.push({ username: users[i].username, id: users[i].id });
+		result.push({
+			username: users[i].username,
+			id: users[i].id,
+			email: users[i].email
+		});
 	}
 
 	res.json(result);
@@ -66,6 +73,7 @@ app.get('/api/users', (req, res) => {
 app.post('/api/order', (req, res) => {
 	// Assign order to req.body
 	let order = req.body;
+	console.log('order:', order);
 
 	// assign user to order.userID
 	let user = userdb.get('users').find({ id: order.userId }).value();
@@ -79,7 +87,7 @@ app.post('/api/order', (req, res) => {
 
 	// foreach orderitem find the id and price from menu. Add sum to ordertotal
 	for (let i = 0; i < order.items.length; i++) {
-		const menuItem = db.get('menu').find({ id: order.items[i] }).value();
+		const menuItem = db.get('menu').find({ id: order.items[i].id }).value();
 		orderTotal += menuItem.price;
 		result.items.push(menuItem.title);
 	}
@@ -143,13 +151,14 @@ app.get('/api/order/active/:userid', (req, res) => {
 
 	let result = {
 		success: false,
-		message: 'You have no active orders.'
+		message: 'Du har ingen aktiv order.'
 	};
 
 	for (let i = 0; i < orders.length; i++) {
 		if (orders[i].eta > currentTime && orders[i].date >= currentDate) {
 			result.success = true;
-			result.message = 'You have an active order!';
+			result.message = 'Din beställning är på väg!';
+			console.log(result.wait);
 			result.activeOrders = orders[i];
 		}
 	}
