@@ -9,6 +9,7 @@ const menu = new FileSync('./database/menu.json');
 const users = new FileSync('./database/users.json');
 const db = lowdb(menu);
 const userdb = lowdb(users);
+const port = process.env.PORT || 3000;
 userdb.defaults({ users: [] }).write();
 
 app.use(express.json());
@@ -165,6 +166,10 @@ app.get('/api/order/active/:userid', (req, res) => {
 	res.json(result);
 });
 
-app.listen(3000, () => {
+// app.listen(3000, () => {
+// 	console.log('Server is listening on port 3000');
+// });
+
+app.listen(port, () => {
 	console.log('Server is listening on port 3000');
 });

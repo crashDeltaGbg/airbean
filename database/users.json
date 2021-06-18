@@ -113,6 +113,44 @@
           "date": "06/18/2021",
           "time": "12:11 AM",
           "eta": "12:28 AM"
+        },
+        {
+          "items": [
+            "Bryggkaffe",
+            "Caffè Doppio",
+            "Kaffe Latte",
+            "Kaffe Latte",
+            "Kaffe Latte",
+            "Bryggkaffe",
+            "Bryggkaffe",
+            "Caffè Doppio",
+            "Caffè Doppio"
+          ],
+          "id": "78C1xvZlY-pCEBJ34F2JU",
+          "total": 426,
+          "date": "06/18/2021",
+          "time": "9:55 AM",
+          "eta": "10:23 AM",
+          "success": true,
+          "message": "Order history updated"
+        },
+        {
+          "items": [
+            "Bryggkaffe",
+            "Caffè Doppio",
+            "Kaffe Latte",
+            "Kaffe Latte",
+            "Kaffe Latte",
+            "Bryggkaffe",
+            "Bryggkaffe",
+            "Caffè Doppio",
+            "Caffè Doppio"
+          ],
+          "id": "4z5z_ebnDfytiRiQA_Rcv",
+          "total": 426,
+          "date": "06/18/2021",
+          "time": "10:03 AM",
+          "eta": "10:35 AM"
         }
       ]
     }
